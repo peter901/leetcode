@@ -14,27 +14,20 @@ class DailyTemperaturesTest extends TestCase
         $this->soln = new Solution();
     }
 
-    public function test1()
-    {
-        $temps = [73,74, 75, 71, 69, 72, 76, 73];
+    public function data(){
 
-
-        $this->assertEquals([1,1,4,2,1,1,0,0],$this->soln->dailyTemperatures($temps));
+        return [
+            [[1,1,4,2,1,1,0,0],[73,74, 75, 71, 69, 72, 76, 73]],
+            [[1,1,1,0],[30,40,50,60]],
+            [[1,1,0],[30,60,90]]
+        ];
     }
 
-    public function test2()
+    /**
+     * @dataProvider data
+     */
+    public function test1($ans, $temps)
     {
-        $temps = [30,40,50,60];
-
-
-        $this->assertEquals([1,1,1,0],$this->soln->dailyTemperatures($temps));
-    }
-
-    public function test3()
-    {
-        $temps = [30,60,90];
-
-
-        $this->assertEquals([1,1,0],$this->soln->dailyTemperatures($temps));  
+        $this->assertEquals($ans,$this->soln->dailyTemperatures($temps));
     }
 }
