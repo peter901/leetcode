@@ -12,8 +12,9 @@ class MyCircularQueue
      */
     function __construct($k)
     {
+        
         $this->size = (int) $k + 1;
-
+        $this->queue = array_fill(0, $this->size,null);
         $this->f = $this->b = 0;
     }
 
